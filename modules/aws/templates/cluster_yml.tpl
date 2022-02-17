@@ -12,6 +12,7 @@ nodes:
         - controlplane
         - etcd
         - worker
+      ssh_key_path: /Users/andy/.ssh/rancher-laptop
     - address: ${server_ip_2}
       user: ${user}
       role:
@@ -19,7 +20,7 @@ nodes:
         - etcd
         - worker
       ssh_key_path: /Users/andy/.ssh/rancher-laptop
-kubernetes_version: v1.20.14-rancher1-1
+kubernetes_version: v1.20.12-rancher1-1
 cloud_provider:
     name: aws
 network: 
