@@ -12,15 +12,33 @@ curl https://releases.rancher.com/install-docker/20.10.sh | sh
 sudo usermod -aG docker $USER
 
 reference: https://rancher.com/docs/rancher/v2.5/en/installation/requirements/installing-docker/
-```
 
+Set hostname for aws cloud controller manager
+
+```
+curl http://169.254.169.254/latest/meta-data/local-hostname
+
+hostnamectl set-hostname
 ```
 # terraform
 
 terraform apply -var-file=terraform.tfvars --auto-approve
 terraform destroy -var-file=terraform.tfvars --auto-approve
 
+# Install Rancher
 
-# infrastructure-rke-aws-terraform
-```# infrastructure-rke-aws-terraform
-# infrastructure-rke-aws-terraform
+k create ns cattle-system   
+
+helm install rancher rancher-stable/rancher \
+--namespace cattle-system \
+--set hostname=upstream.andygodish.com \
+--set ingress.tls.source=letsEncrypt \
+--set replicas=3 \
+--set letsEncrypy.email=agodish18@gmail.com --version=2.5.11
+
+helm upgrade rancher rancher-stable/rancher \
+--namespace cattle-system \
+--set hostname=upstream.andygodish.com \
+--set ingress.tls.source=letsEncrypt \
+--set replicas=3 \
+--set letsEncrypy.email=agodish18@gmail.com --version=2.5.12

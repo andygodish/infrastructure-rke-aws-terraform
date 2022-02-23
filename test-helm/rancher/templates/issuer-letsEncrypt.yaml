@@ -1,0 +1,21 @@
+---
+# Source: rancher/templates/issuer-letsEncrypt.yaml
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: rancher
+  labels:
+    app: rancher
+    chart: rancher-2.5.8
+    heritage: Helm
+    release: rancher
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: 
+    privateKeySecretRef:
+      name: letsencrypt-production
+    solvers:
+    - http01:
+        ingress:
+          class:
