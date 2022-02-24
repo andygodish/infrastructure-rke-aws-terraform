@@ -1,0 +1,27 @@
+nodes:
+    - address: 15.205.36.253
+      user: ubuntu
+      role:
+        - controlplane
+        - etcd
+        - worker
+      ssh_key_path: /Users/andy/.ssh/rancher-laptop
+    - address: 52.61.49.62
+      user: ubuntu
+      role:
+        - controlplane
+        - etcd
+        - worker
+      ssh_key_path: /Users/andy/.ssh/rancher-laptop
+    - address: 15.205.204.232
+      user: ubuntu
+      role:
+        - controlplane
+        - etcd
+        - worker
+      ssh_key_path: /Users/andy/.ssh/rancher-laptop
+kubernetes_version: v1.20.12-rancher1-1
+cloud_provider:
+    name: aws
+network: 
+  plugin: canal
