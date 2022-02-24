@@ -16,9 +16,7 @@ reference: https://rancher.com/docs/rancher/v2.5/en/installation/requirements/in
 Set hostname for aws cloud controller manager
 
 ```
-curl http://169.254.169.254/latest/meta-data/local-hostname
-
-hostnamectl set-hostname
+sudo hostnamectl set-hostname $(curl http://169.254.169.254/latest/meta-data/local-hostname)
 ```
 # terraform
 
@@ -34,7 +32,7 @@ helm install rancher rancher-stable/rancher \
 --set hostname=upstream.andygodish.com \
 --set ingress.tls.source=letsEncrypt \
 --set replicas=3 \
---set letsEncrypy.email=agodish18@gmail.com --version=2.5.11
+--set letsEncrypy.email=agodish18@gmail.com --version=2.5.12
 
 helm upgrade rancher rancher-stable/rancher \
 --namespace cattle-system \

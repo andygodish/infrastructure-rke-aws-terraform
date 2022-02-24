@@ -29,3 +29,13 @@ resource "local_file" "cluster_yml" {
   )
   filename = "cluster.yml"
 }
+
+resource "local_file" "instance_profile" {
+  content = templatefile("${path.module}/templates/instance_profile.tpl",
+    {
+      server_iam_profile = aws_iam_instance_profile.rke_master_iam_profile.name
+      agent_iam_profile = aws_iam_instance_profile.rke_agent_iam_profile.name
+    }
+  )
+  filename = "instance_profile.yml"
+}
