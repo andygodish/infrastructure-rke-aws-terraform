@@ -3,6 +3,5 @@ terraform.tfstate
 terraform.tfstate.backup
 .idea/
 *.iml
-**/cluster.yml
 **/cluster.rkestate
 **/kube_config_cluster.yml
