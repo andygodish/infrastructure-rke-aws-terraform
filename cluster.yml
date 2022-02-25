@@ -1,19 +1,19 @@
 nodes:
-    - address: 15.205.36.253
+    - address: 160.1.31.221
       user: ubuntu
       role:
         - controlplane
         - etcd
         - worker
       ssh_key_path: /Users/andy/.ssh/rancher-laptop
-    - address: 52.61.49.62
+    - address: 15.205.211.157
       user: ubuntu
       role:
         - controlplane
         - etcd
         - worker
       ssh_key_path: /Users/andy/.ssh/rancher-laptop
-    - address: 15.205.204.232
+    - address: 52.61.88.146
       user: ubuntu
       role:
         - controlplane
