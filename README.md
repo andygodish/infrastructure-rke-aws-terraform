@@ -29,10 +29,10 @@ k create ns cattle-system
 
 helm install rancher rancher-stable/rancher \
 --namespace cattle-system \
---set hostname=upstream.andygodish.com \
+--set hostname=rancher.andygodish.com \
 --set ingress.tls.source=letsEncrypt \
 --set replicas=3 \
---set letsEncrypy.email=agodish18@gmail.com --version=2.5.12
+--set letsEncrypy.email=agodish18@gmail.com --version=2.6.3
 
 helm upgrade rancher rancher-stable/rancher \
 --namespace cattle-system \

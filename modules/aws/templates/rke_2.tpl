@@ -1,13 +1,12 @@
 nodes:
-    - address: 15.205.97.134
-      user: ubuntu
+    - address: ${server_ip}
+      user: ${user}
       role:
         - controlplane
         - etcd
         - worker
       ssh_key_path: /Users/andy/.ssh/rancher-laptop
-      hostname_override: ip-10-0-11-221.us-gov-west-1.compute.internal
-kubernetes_version: v1.21.7-rancher1-1
+kubernetes_version: v1.20.12-rancher1-1
 cloud_provider:
     name: aws
 network: 
