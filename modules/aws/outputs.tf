@@ -70,19 +70,22 @@ resource "local_file" "instance_profile" {
   filename = "instance_profile.yml"
 }
 
-resource "local_file" "ansible_inventory" {
-  content = templatefile("${path.module}/templates/ansible_inventory.tpl}", {
-    server_ip_0 = aws_instance.server[0].public_ip
-    server_ip_1 = aws_instance.server[1].public_ip
-    server_ip_2 = aws_instance.server[2].public_ip
-  })
+resource "local_file" "hosts_ini" {
+  content = templatefile("${path.module}/templates/hosts.tpl",
+    {
+      server_ip_0 = aws_instance.server[0].public_ip
+      server_ip_1 = aws_instance.server[1].public_ip
+      server_ip_2 = aws_instance.server[2].public_ip
+    }
+  )
   filename = "hosts.ini"
 }
 
-resource "local_file" "ansible_group_vars" {
-  content = templatefile("${path.module}/templates/all.tpl}", {
-    user = var.amis[var.region][var.os].user
-  })
+resource "local_file" "all_yml" {
+  content = templatefile("${path.module}/templates/all.tpl",
+    {
+      user = var.amis[var.region][var.os].user
+    }
+  )
   filename = "all.yml"
 }
-
