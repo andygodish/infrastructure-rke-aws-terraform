@@ -1,0 +1,34 @@
+---
+
+- hosts: all
+  gather_facts: yes
+  become: yes
+  tasks:
+  - name: Get private fqnd for aws instance.
+    command: curl http://169.254.169.254/latest/meta-data/local-hostname
+    register: hostname
+
+  - name: "Update hostnames for aws cloud contoller manager requirements."
+    hostname:
+      name: "{{ hostname.stdout }}"
+
+  - name: Check If Docker Is Installed
+    command: docker --version
+    register: docker_valid
+    ignore_errors: yes
+
+  - name: Debug Docker Output
+    debug:
+      var: docker_valid
+
+  - name: "Install docker using the Rancher-provided curl command"
+    shell: 
+      cmd: curl https://releases.rancher.com/install-docker/20.10.sh | sh -s -- -y
+    when: docker_valid.failed
+
+  - name: "Modifying default_user associated with the Terraform os user with the appended 'docker' group."
+    user: 
+      name: "{{ ansible_user }}"
+      groups: docker
+      append: yes
+      
