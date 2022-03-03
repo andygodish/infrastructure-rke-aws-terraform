@@ -40,3 +40,6 @@ helm upgrade rancher rancher-stable/rancher \
 --set ingress.tls.source=letsEncrypt \
 --set replicas=3 \
 --set letsEncrypy.email=agodish18@gmail.com --version=2.5.12
+
+---
+
