@@ -16,9 +16,14 @@ variable "amis" {
         ami  = "ami-0ac4e06a69870e5be"
         user = "ec2-user"
       }
-      "rhel7" = {
+      "rhel7" = { // 7.9
         ami  = "ami-e9d5ec88"
         user = "ec2-user"
+      }
+      
+      "rhel76" = {
+        ami = "ami-9d85f9fc"
+        user="ec2-user"
       }
       "sles15sp2" = {
         ami  = "ami-04e3d865"
@@ -49,12 +54,12 @@ variable "amis" {
 }
 
 variable "cluster_name" {
-  type = string
+  type    = string
   default = "rke-cluster"
 }
 
 variable "is_public" {
-    type = bool
+  type = bool
 }
 
 variable "os" {
@@ -71,10 +76,10 @@ variable "rke_agent_count" {
 }
 
 variable "region" {
-  type    = string
+  type = string
 }
 
-variable "tfuser"{
-  type = string
+variable "tfuser" {
+  type    = string
   default = "andyg"
 }

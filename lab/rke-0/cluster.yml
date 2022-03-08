@@ -1,12 +1,12 @@
 nodes:
-    - address: 3.32.15.138
-      user: ubuntu
+    - address: 52.222.68.35
+      user: centos
       role:
         - controlplane
         - etcd
         - worker
       ssh_key_path: /Users/andy/.ssh/rancher-laptop
-kubernetes_version: v1.21.8-rancher1-1
+kubernetes_version: v1.19.16-rancher1-2
 cloud_provider:
     name: aws
 network: 

@@ -23,7 +23,7 @@
 
   - name: "Install docker using the Rancher-provided curl command"
     shell: 
-      cmd: curl https://releases.rancher.com/install-docker/20.10.sh | sh -s -- -y
+      cmd: curl https://releases.rancher.com/install-docker/18.06.sh | sh -s -- -y
     when: docker_valid.failed
 
   - name: "Modifying default_user associated with the Terraform os user with the appended 'docker' group."
