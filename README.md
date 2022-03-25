@@ -38,7 +38,7 @@ helm install rancher rancher-stable/rancher \
 --set hostname=rancher.andygodish.com \
 --set ingress.tls.source=letsEncrypt \
 --set replicas=3 \
---set letsEncrypy.email=agodish18@gmail.com --version=2.4.5
+--set letsEncrypy.email=agodish18@gmail.com --version=2.6.3
 
 helm install rancher rancher-stable/rancher \
 --namespace cattle-system \
@@ -60,4 +60,18 @@ Query for VPC IDs - will eventually be used to identify ELBs associated with the
 
 ```
 aws ec2 --query 'Vpcs[*].{VpcId:VpcId,Name:Tags[?Key==`Name`].Value|[0],CidrBlock:CidrBlock}' describe-vpcs
+```
+
+# PSP
+
+Add to your cluster.yml for enabling PSPs correctly:
+
+This only applies to RKE1, by default, in RKE2, PSP support is enabled by default, and significantly more strict when running with `profile: cis-1.5`
+
+```
+services:
+  kube-api:
+    pod_security_policy: true
+    extra_args:
+      enable-admission-plugins: "NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota"
 ```

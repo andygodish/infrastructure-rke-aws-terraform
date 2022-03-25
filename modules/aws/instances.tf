@@ -52,7 +52,7 @@ resource "aws_instance" "server" {
 
   root_block_device {
     volume_type = "standard"
-    volume_size = 30
+    volume_size = 100
   }
 
   subnet_id                   = aws_subnet.rke_public_subnet_1.id

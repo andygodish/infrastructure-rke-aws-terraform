@@ -4,4 +4,3 @@ public_ssh_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1sjmPD39YFXnJrpreJNRlac
 region = "us-gov-west-1"
 rke_agent_count = 0
 tfuser = "andyg"
-
