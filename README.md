@@ -35,10 +35,10 @@ k create ns cattle-system
 
 helm install rancher rancher-stable/rancher \
 --namespace cattle-system \
---set hostname=rancher.andygodish.com \
+--set hostname=upstream.andygodish.com \
 --set ingress.tls.source=letsEncrypt \
 --set replicas=3 \
---set letsEncrypy.email=agodish18@gmail.com --version=2.6.3
+--set letsEncrypy.email=agodish18@gmail.com --version=2.6.2
 
 helm install rancher rancher-stable/rancher \
 --namespace cattle-system \
@@ -75,3 +75,19 @@ services:
     extra_args:
       enable-admission-plugins: "NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota"
 ```
+
+Check if PSPs are enabled in the kube-apiserver with this command: 
+
+/bin/ps -ef | grep kube-apiserver | grep -v grep | grep enable
+
+https://docs.rke2.io/security/cis_self_assessment16/#1210
+
+
+# Node template configs
+
+### Centos7
+ami-bbba86da
+centos
+
+### Server - Will likely update at some point
+server-iam-profile-1JvB7h 

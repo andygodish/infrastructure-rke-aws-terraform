@@ -1,0 +1,26 @@
+nodes:
+    - address: 160.1.87.248
+      user: centos
+      role:
+        - controlplane
+        - etcd
+        - worker
+      ssh_key_path: /Users/andy/.ssh/rancher-laptop
+    - address: 52.222.10.235
+      user: centos
+      role:
+        - controlplane
+        - etcd
+        - worker
+      ssh_key_path: /Users/andy/.ssh/rancher-laptop
+    - address: 160.1.112.190
+      user: centos
+      role:
+        - controlplane
+        - etcd
+        - worker
+      ssh_key_path: /Users/andy/.ssh/rancher-laptop
+kubernetes_version: v1.18.20-rancher1-3
+cloud_provider:
+    name: aws
+

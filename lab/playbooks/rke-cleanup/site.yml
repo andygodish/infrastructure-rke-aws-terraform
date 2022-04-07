@@ -1,0 +1,26 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: remove all docker containers
+      shell: |
+        docker rm -f $(docker ps -qa)
+      # when: (docker_info.containers | length)  != 0
+
+    - name: remove all docker volumes
+      shell: |
+        docker volume rm $(docker volume ls -q)
+
+    - name: remove directies
+      file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /var/lib/etcd
+        - etc/kubernetes
+        - /etc/cni
+        - /opt/cni
+        - /var/lib/cni
+        - /var/run/calico
+        - /opt/rke

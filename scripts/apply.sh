@@ -1,5 +1,8 @@
 #!/bin/bash
 
+rm ./cluster/cluster.rkestate
+rm ./cluster/kube_config_cluster.yml
+
 rm ./lab/rke-0/*
 rm ./lab/rke-1/*
 rm ./lab/rke-2/*
@@ -17,3 +20,4 @@ mv rke-2.yml ./lab/rke-2/cluster.yml
 #                 *****
 mv hosts.ini ./lab/playbooks/inventory/hosts.ini
 mv all.yml ./lab/playbooks/inventory/group_vars/all.yml
+mv cluster.yml ./cluster
