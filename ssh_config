@@ -1,0 +1,12 @@
+Host rke-server-0
+  Hostname 52.61.218.48
+  User centos
+  IdentityFile ~/.ssh/rancher-laptop
+Host rke-server-1
+  Hostname 15.200.238.206
+  User centos
+  IdentityFile ~/.ssh/rancher-laptop
+Host rke-server-2
+  Hostname 160.1.119.21
+  User centos
+  IdentityFile ~/.ssh/rancher-laptop

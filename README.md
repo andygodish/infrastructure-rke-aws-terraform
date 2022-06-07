@@ -91,3 +91,9 @@ centos
 
 ### Server - Will likely update at some point
 server-iam-profile-1JvB7h 
+
+# rke2 configuration
+
+export PATH=/var/lib/rancher/rke2/bin:$PATH
+export KUBECONFIG=/etc/rancher/rke2/rke2.yaml
+alias k=kubectl
