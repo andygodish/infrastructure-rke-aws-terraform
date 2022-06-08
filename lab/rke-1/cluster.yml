@@ -1,5 +1,5 @@
 nodes:
-    - address: 52.222.10.235
+    - address: 160.1.42.95
       user: centos
       role:
         - controlplane

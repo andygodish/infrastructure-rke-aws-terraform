@@ -15,7 +15,7 @@ resource "local_file" "ssh_config" {
       user        = var.amis[var.region][var.os].user
     }
   )
-  filename = "ssh_config"
+  filename = "config"
 }
 
 resource "local_file" "cluster_yml" {

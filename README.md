@@ -27,6 +27,7 @@ terraform destroy -var-file=terraform.tfvars --auto-approve
 
 ```
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.0.1/cert-manager.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.7.1/cert-manager.yaml
 ```
 
 # Install Rancher
@@ -35,10 +36,10 @@ k create ns cattle-system
 
 helm install rancher rancher-stable/rancher \
 --namespace cattle-system \
---set hostname=upstream.andygodish.com \
+--set hostname=rancher.andyg.io \
 --set ingress.tls.source=letsEncrypt \
 --set replicas=3 \
---set letsEncrypy.email=agodish18@gmail.com --version=2.6.2
+--set letsEncrypy.email=agodish18@gmail.com --version=2.5.9
 
 helm install rancher rancher-stable/rancher \
 --namespace cattle-system \
@@ -97,3 +98,5 @@ server-iam-profile-1JvB7h
 export PATH=/var/lib/rancher/rke2/bin:$PATH
 export KUBECONFIG=/etc/rancher/rke2/rke2.yaml
 alias k=kubectl
+
+
