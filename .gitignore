@@ -6,3 +6,6 @@ terraform.tfstate.backup
 **/cluster.rkestate
 **/kube_config_cluster.yml
 config
+**/*.pem
+**/*.crt
+**/*.key

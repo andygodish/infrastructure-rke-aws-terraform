@@ -34,12 +34,12 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 
 k create ns cattle-system   
 
-helm install rancher rancher-stable/rancher \
+helm upgrade rancher rancher-stable/rancher \
 --namespace cattle-system \
 --set hostname=rancher.andyg.io \
---set ingress.tls.source=letsEncrypt \
---set replicas=3 \
---set letsEncrypy.email=agodish18@gmail.com --version=2.5.9
+--set replicas=1 \
+--set ingress.tls.source=secret \
+--set letsEncrypy.email=agodish18@gmail.com --version=2.5.12
 
 helm install rancher rancher-stable/rancher \
 --namespace cattle-system \
@@ -99,4 +99,16 @@ export PATH=/var/lib/rancher/rke2/bin:$PATH
 export KUBECONFIG=/etc/rancher/rke2/rke2.yaml
 alias k=kubectl
 
+scp rke-server-0:/tmp/rke2.yaml ~/.kube/infrastructure-rke2-aws-terrraform-config
+export KUBECONFIG=~/.kube/infrastructure-rke2-aws-terrraform-config
+
+```
+echo "Waiting for rke2 config file to exist.."
+while [[ ! -f /etc/rancher/rke2/rke2.yaml ]]; do
+  sleep 2
+done
+
+cp /etc/rancher/rke2/rke2.yaml /tmp/rke2.yaml
+sed -i -e "s/127.0.0.1/${cp_lb_host}/g" /tmp/rke2.yaml
+```
 
