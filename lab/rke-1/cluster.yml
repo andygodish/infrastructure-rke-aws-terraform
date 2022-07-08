@@ -1,13 +1,16 @@
 nodes:
-    - address: 160.1.42.95
+    - address: 52.61.74.165
       user: centos
       role:
         - controlplane
         - etcd
         - worker
       ssh_key_path: /Users/andy/.ssh/rancher-laptop
-kubernetes_version: v1.20.12-rancher1-1
-cloud_provider:
-    name: aws
+    - address: 160.1.33.116
+      user: centos
+      role:
+        - worker
+      ssh_key_path: /Users/andy/.ssh/rancher-laptop
+kubernetes_version: v1.22.7-rancher1-1
 network: 
   plugin: canal

@@ -1,0 +1,16 @@
+ingress:
+  enabled: true
+  className: nginx
+  hosts: 
+  - host: wiki.andyg.io
+    paths: 
+    - path: /
+      pathType: Prefix 
+  tls:
+  - hosts:
+    - wiki.andyg.io
+    secretName: tls-wiki-ingress
+postgresql:
+  enabled: true
+  persistence:
+    enabled: false

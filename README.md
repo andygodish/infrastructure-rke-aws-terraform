@@ -34,12 +34,12 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 
 k create ns cattle-system   
 
-helm upgrade rancher rancher-stable/rancher \
+helm install rancher rancher-stable/rancher \
 --namespace cattle-system \
 --set hostname=rancher.andyg.io \
 --set replicas=1 \
 --set ingress.tls.source=secret \
---set letsEncrypy.email=agodish18@gmail.com --version=2.5.12
+--set letsEncrypy.email=agodish18@gmail.com --version=2.6.6
 
 helm install rancher rancher-stable/rancher \
 --namespace cattle-system \
@@ -112,3 +112,13 @@ cp /etc/rancher/rke2/rke2.yaml /tmp/rke2.yaml
 sed -i -e "s/127.0.0.1/${cp_lb_host}/g" /tmp/rke2.yaml
 ```
 
+sh ./rke2-config.sh agent v1.20.6+rke2r1 rke-cp-elb-GKeWbI-1912500106.us-gov-west-1.elb.amazonaws.com K10b9b1b662a10c9c9131eacadfedcc1d37d3b8c2e9f729f9edd7450f9f1d2b91c8::server:321ea10a1d4e499f7a8a5c1bbc14f500
+
+curl -sfL https://get.rke2.io | INSTALL_RKE2_VERSION=v1.22.9+rke2r1 sh -;
+
+---
+
+
+echo $(kubectl get clusterrolebinding,rolebinding -n cattle-fleet-system -o json | jq -r '.items[] | select((.subjects[].kind=="ServiceAccount" and .subjects[].name=="default") or (.subjects[].kind=="Group" and .subjects[].name=="system:serviceaccounts"))' | jq -r '"\(.roleRef.kind),\(.roleRef.name)"')
+
+PublicIpAddress
